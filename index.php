@@ -21,6 +21,7 @@
                 <option value="8">8</option>
                 <option value="16">16</option>
                 <option value="32">32</option>
+                <option value="64">64</option>
             </select>
             <input type="submit" value="Genera">
         </form>
@@ -44,12 +45,17 @@
         return $password;
     }
     
-    // se la lunghezza non è nulla richiamo la funzione
+    // se la lunghezza non è nulla e coincide col valore della select:
     if (isset($length)) {
-        $randomPassword = generate_password($length);
+        // richiamo la funzione
+        if ($length >= 8 && $length <= 64) {
+            $randomPassword = generate_password($length);
 
-        // mostro la password finale
-        echo "Password: $randomPassword";
+            // mostro la password finale
+            echo "Password: $randomPassword";
+        }else {
+            echo "Seleziona una lunghezza e riprova";
+        }
     } 
     ?>
     </div>
