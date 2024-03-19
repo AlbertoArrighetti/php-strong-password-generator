@@ -24,9 +24,35 @@
             </select>
             <input type="submit" value="Genera">
         </form>
+  
+
+    <?php 
+    // prelevo la lunghezza
+    $length = $_GET['length'];
+
+    // funzione per generare la password che richieda come variabile la lunghezza inserita
+    function generate_password ($length) {
+
+        // caratteri disponibili
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*_?';
+        $password = '';
+
+        // genero un carattere casuale per la lunghezza del valore selezionato
+        for ($i = 0; $i < $length; $i++) {
+            $password .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $password;
+    }
+    
+    // se la lunghezza non è nulla richiamo la funzione
+    if (isset($length)) {
+        $randomPassword = generate_password($length);
+
+        // mostro la password finale
+        echo "Password: $randomPassword";
+    } 
+    ?>
     </div>
-
-
 
     <!-- link to bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
