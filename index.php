@@ -15,7 +15,7 @@
         <h1 class="mb-4">
             Password generator
         </h1>
-        <form action="" method="get">
+        <form action="" method="get" class="mb-5">
             <select class="form-select mb-4 " name="length">
                 <option selected>Seleziona La lunghezza della password</option>
                 <option value="8">8</option>
@@ -26,38 +26,11 @@
             <input type="submit" value="Genera">
         </form>
   
-
-    <?php 
-    // prelevo la lunghezza
-    $length = $_GET['length'];
-
-    // funzione per generare la password che richieda come variabile la lunghezza inserita
-    function generate_password ($length) {
-
-        // caratteri disponibili
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*_?';
-        $password = '';
-
-        // genero un carattere casuale per la lunghezza del valore selezionato
-        for ($i = 0; $i < $length; $i++) {
-            $password .= $characters[rand(0, strlen($characters) - 1)];
-        }
-        return $password;
-    }
-    
-    // se la lunghezza non è nulla e coincide col valore della select:
-    if (isset($length)) {
-        // richiamo la funzione
-        if ($length >= 8 && $length <= 64) {
-            $randomPassword = generate_password($length);
-
-            // mostro la password finale
-            echo "Password: $randomPassword";
-        }else {
-            echo "Seleziona una lunghezza e riprova";
-        }
-    } 
-    ?>
+        <div class="result">
+            <?php 
+                include __DIR__ . "/partials/functions.php";
+            ?>
+        </div>
     </div>
 
     <!-- link to bootstrap -->
